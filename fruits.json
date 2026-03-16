@@ -1,0 +1,1 @@
+[{"name":"kela","price":200,"in_season":false,"color":"red","id":1},{"id":2,"name":"banana","price":50,"in_season":false,"color":"yellow"},{"id":3,"name":"orange","price":200,"in_season":true,"color":"orange"},{"name":"new","price":200,"in_season":false,"color":"red","id":5}]
