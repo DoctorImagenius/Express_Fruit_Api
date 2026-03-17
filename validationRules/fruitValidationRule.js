@@ -1,8 +1,13 @@
-const {body, query, param} = require("express-validator")
+const { body, query, param } = require("express-validator")
 
 const validationBodyRules = [
     body("name").isString().withMessage("Name must be string").notEmpty().withMessage("Name requird"),
-    body("price").isNumeric().withMessage("price must be number").notEmpty().withMessage("price requird"),
+    body("price").isNumeric().withMessage("price must be number").notEmpty().withMessage("price requird").custom((value) => {
+        if(value <= 0){
+            throw new Error("Price must be greater then 0")
+        }
+        return true;
+    }),
     body("in_season").isBoolean().withMessage("in_season must be boolean").notEmpty().withMessage("in_season requird"),
     body("color").isString().withMessage("in_season must be string").notEmpty().withMessage("color requird"),
 ]

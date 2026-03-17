@@ -1,6 +1,7 @@
 const fs = require("fs/promises")
 const path = require("path")
-let filePath = path.join(__dirname, "../fruits.json")
+const filePath = path.join(__dirname, "../fruits.json")
+const {freshFruits} = require("../models/routeModel")
 
 
 async function getFruit (req, res, next) {

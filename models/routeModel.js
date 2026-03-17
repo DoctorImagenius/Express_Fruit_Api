@@ -20,5 +20,5 @@ async function configureDb () {
     }
 }
 
-module.exports = {configureDb}
+module.exports = {configureDb,freshFruits}
 
