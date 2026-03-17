@@ -1,6 +1,8 @@
 const fs = require("fs/promises")
 const path = require("path")
 let filePath = path.join(__dirname, "../fruits.json")
+const {validationResult} = require("express-validator")
+
 
 
 async function getFruit (req, res, next) {
@@ -21,6 +23,11 @@ async function getFruit (req, res, next) {
 }
 
 async function getFruits (req, res, next) {
+
+    let errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json({ errors: errors.array() });
+    }
 
     let { name, price, in_season, color } = req.query;
 
@@ -62,6 +69,12 @@ async function getFruits (req, res, next) {
 }
 
 async function createFruit(req, res, next) {
+
+    let errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     let newFruit = req.body;
 
     try {
@@ -78,7 +91,6 @@ async function createFruit(req, res, next) {
 
     }
 }
-
 
 async function restoreFruits(req, res, next) {
 
