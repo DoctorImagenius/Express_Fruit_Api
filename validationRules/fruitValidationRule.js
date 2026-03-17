@@ -18,8 +18,17 @@ const validationParamRules = [
     param("id").isInt().withMessage("id must be number")
 ]
 
+const validationMixRules = [
+    param("id").isInt().withMessage("id must be number"),
+    body("name").isString().withMessage("Name must be string").notEmpty().withMessage("Name requird"),
+    body("price").isNumeric().withMessage("price must be number").notEmpty().withMessage("price requird"),
+    body("in_season").isBoolean().withMessage("in_season must be boolean").notEmpty().withMessage("in_season requird"),
+    body("color").isString().withMessage("in_season must be string").notEmpty().withMessage("color requird"),
+]
+
 module.exports = {
     validationBodyRules,
     validationQueryRules,
-    validationParamRules
+    validationParamRules,
+    validationMixRules
 }

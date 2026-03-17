@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const { getFruit, getFruits, createFruit, restoreFruits, updateFruit, deleteFruit } = require("../controllers/fruitsControllers")
 const {authMiddleware} = require("../middlewares/authMiddleware")
-const {validationBodyRules, validationQueryRules, validationParamRules} = require("../validationRules/fruitValidationRule")
+const {validationBodyRules, validationQueryRules, validationParamRules, validationMixRules} = require("../validationRules/fruitValidationRule")
 const {validationMiddleware} = require("../middlewares/validationMiddleware")
 
 
@@ -14,7 +14,7 @@ router.post("/",validationBodyRules ,validationMiddleware, createFruit)
 
 router.post("/restore", restoreFruits)
 
-router.put("/:id", validationParamRules, validationMiddleware, updateFruit)
+router.put("/:id", validationMixRules, validationMiddleware, updateFruit)
 
 router.delete("/:id", authMiddleware, validationParamRules, validationMiddleware, deleteFruit)
 
