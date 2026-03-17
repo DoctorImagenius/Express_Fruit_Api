@@ -1,4 +1,4 @@
-const {body, query} = require("express-validator")
+const {body, query, param} = require("express-validator")
 
 const validationBodyRules = [
     body("name").isString().withMessage("Name must be string").notEmpty().withMessage("Name requird"),
@@ -14,7 +14,12 @@ const validationQueryRules = [
     query("color").optional().isString().withMessage("in_season must be string"),
 ]
 
+const validationParamRules = [
+    param("id").isInt().withMessage("id must be number")
+]
+
 module.exports = {
     validationBodyRules,
-    validationQueryRules
+    validationQueryRules,
+    validationParamRules
 }

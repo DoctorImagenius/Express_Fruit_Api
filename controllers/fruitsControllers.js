@@ -114,7 +114,7 @@ async function updateFruit(req, res, next) {
             return fruit.id === id ? updatedFruit : fruit;
         })
         await fs.writeFile(filePath, JSON.stringify(updatedFruits))
-        res.status(200).json(updatedFruits)
+        res.status(200).json(updatedFruit)
     }
     catch (err) {
         next(err)
