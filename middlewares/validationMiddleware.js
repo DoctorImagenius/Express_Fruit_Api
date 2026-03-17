@@ -1,7 +1,7 @@
 const {validationResult} = require("express-validator")
 
 
-let checkValidation = (req, res, next) => {
+let validationMiddleware = (req, res, next) => {
 
     let errors = validationResult(req);
 
@@ -11,4 +11,4 @@ let checkValidation = (req, res, next) => {
     next();
 }
 
-module.exports = {checkValidation}
+module.exports = {validationMiddleware}
