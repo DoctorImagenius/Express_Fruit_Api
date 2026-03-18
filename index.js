@@ -6,6 +6,8 @@ const {configureDb} = require("./models/routeModel")
 
 const app = express()
 
+app.set("view engine", "ejs") // view engine
+
 configureDb()
 
 app.use(express.json()) // application middleware

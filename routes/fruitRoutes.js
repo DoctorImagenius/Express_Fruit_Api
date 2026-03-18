@@ -6,6 +6,10 @@ const {validationBodyRules, validationQueryRules, validationParamRules, validati
 const {validationMiddleware} = require("../middlewares/validationMiddleware")
 
 
+router.get("/template", (req, res) =>{
+    res.render("template", {name : "haroon", city : "Lahore"})
+})
+
 router.get("/:id", validationParamRules, validationMiddleware, getFruit)
 
 router.get("/", validationQueryRules, validationMiddleware, getFruits)
