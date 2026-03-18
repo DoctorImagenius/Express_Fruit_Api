@@ -4,18 +4,6 @@ const filePath = path.join(__dirname, "../fruits.json")
 const {freshFruits} = require("../models/routeModel")
 
 
-async function getTemplateEngine(req, res, next) {
-    
-    try {
-        let fruits = await fs.readFile(filePath, "utf8")
-        fruits = JSON.parse(fruits)
-        res.render("template", {fruits : fruits})
-    }
-    catch (err) {
-        next(err)
-    }
-}
-
 async function getFruit (req, res, next) {
     const id = Number(req.params.id);
     try {
@@ -166,6 +154,5 @@ module.exports = {
     createFruit,
     restoreFruits,
     updateFruit,
-    deleteFruit,
-    getTemplateEngine
+    deleteFruit
 }
