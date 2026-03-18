@@ -1,7 +1,16 @@
 <body>
     <div>
-        Tis is body dynamic data
+        These are the fresh fruits
     </div>
-    <h1>Name : <%= name%></h1>
-    <h1>City : <%= city%> </h1>
+   <% fruits.forEach((fruit) => {%>
+    <div style="background-color: bisque; color: <%= fruit.color %>; padding: 10px; margin: 10px; border-radius: 10px">
+        <h2>
+        Name : <%= fruit.name %>
+    </h2>
+    <h2>
+        Color : <%= fruit.color %>
+    </h2>
+    </div>
+   <%})%>
+
 </body>

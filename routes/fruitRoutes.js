@@ -1,14 +1,12 @@
 const express = require("express")
 const router = express.Router()
-const { getFruit, getFruits, createFruit, restoreFruits, updateFruit, deleteFruit } = require("../controllers/fruitsControllers")
+const { getFruit, getFruits, createFruit, restoreFruits, updateFruit, deleteFruit, getTemplateEngine } = require("../controllers/fruitsControllers")
 const {authMiddleware} = require("../middlewares/authMiddleware")
-const {validationBodyRules, validationQueryRules, validationParamRules, validationMixRules} = require("../validationRules/fruitValidationRule")
+const {validationBodyRules, validationQueryRules, validationParamRules, validationMixRules } = require("../validationRules/fruitValidationRule")
 const {validationMiddleware} = require("../middlewares/validationMiddleware")
 
 
-router.get("/template", (req, res) =>{
-    res.render("template", {name : "haroon", city : "Lahore"})
-})
+router.get("/template", getTemplateEngine)
 
 router.get("/:id", validationParamRules, validationMiddleware, getFruit)
 
