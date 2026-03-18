@@ -23,7 +23,7 @@ async function getTemplateEngineById(req, res, next) {
         let fruit = fruits.find((fruit) => {
             return fruit.id === id
         })
-        if (!fruit) return res.render("notFound")
+        if (!fruit) return res.status(404).render("notFound")
         res.render("template", {fruits : [fruit]})
     }
     catch (err) {

@@ -3,6 +3,8 @@ const path = require("path")
 const filePath = path.join(__dirname, "../fruits.json")
 const {freshFruits} = require("../models/routeModel")
 
+const {fruitsQueue} = require("../jobs/fruitsWorker")
+
 
 async function getFruit (req, res, next) {
     const id = Number(req.params.id);
@@ -85,14 +87,13 @@ async function restoreFruits(req, res, next) {
 
     try {
         await fs.writeFile(filePath, JSON.stringify(freshFruits));
+        await fruitsQueue.add("fruits", {fruits : freshFruits}, {delay: 1000, attempts: 3, backoff: 1000})
         res.status(201).send("Fruits restored successfully...")
     }
     catch (err) {
         next(err)
 
     }
-
-
 }
 
 async function updateFruit(req, res, next) {
