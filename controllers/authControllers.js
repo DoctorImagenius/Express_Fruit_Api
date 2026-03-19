@@ -2,7 +2,8 @@ const fs = require("fs/promises")
 const path = require("path")
 const usersFilePath = path.join(__dirname, "../users.json")
 const bcrypt = require("bcrypt")
-
+const jwt = require("jsonwebtoken")
+const secretKey = "secret"
 
 
 async function signup(req, res, next) {
@@ -38,7 +39,8 @@ async function signin(req, res, next) {
         let isValid = await bcrypt.compare(password, user.password)
         if (!isValid) return res.status(404).send("Not Found")
 
-        res.status(200).json({user, message: "Signed in successfully..."})
+        let token = jwt.sign({email}, secretKey, {expiresIn: "1h"})
+        res.status(200).json({message: "Signed in successfully...", token})
     }
     catch (err) {
         next(err)
