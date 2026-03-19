@@ -3,7 +3,9 @@ const path = require("path")
 const usersFilePath = path.join(__dirname, "../users.json")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
-const secretKey = "secret"
+require("dotenv").config();
+
+let secretKey = process.env.SECRET_KEY
 
 
 async function signup(req, res, next) {
