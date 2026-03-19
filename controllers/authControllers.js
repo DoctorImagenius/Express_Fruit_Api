@@ -22,7 +22,7 @@ async function signup(req, res, next) {
         if (alreadyExist) return res.status(400).send("User already exist")
         users.push(user)
         await fs.writeFile(usersFilePath, JSON.stringify(users))
-        res.json({ user, message: "Signed up successfully..." })
+        res.json({ user, message: "Signed up successfully, please signin now" })
     }
     catch (err) {
         next(err)
