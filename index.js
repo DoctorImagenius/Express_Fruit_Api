@@ -1,5 +1,6 @@
 const express = require("express")
 const {checkUrlMiddleware, checkHeaderMiddleware} = require("./middlewares/userMiddleware")
+const authRoutes = require("./routes/authRoutes")
 const fruitRoutes = require("./routes/fruitRoutes")
 const templateRoutes = require("./routes/templateRoutes")
 const {errorMidleware} = require("./middlewares/errorMiddleware")
@@ -14,6 +15,7 @@ configureDb()
 app.use(express.json()) // application middleware
 app.use(checkUrlMiddleware) // custom middleware
 app.use(checkHeaderMiddleware) // custom middleware
+app.use("/auth", authRoutes); // auth routes
 app.use("/fruits", fruitRoutes) // fruit routes
 app.use("/template", templateRoutes) // template routes
 app.use(errorMidleware) // error middleware
