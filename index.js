@@ -52,7 +52,14 @@ app.get("/auth/google/callback",
             let user = users.find((user) => {
                 return user.email === email
             })
-            if (!user) return res.status(404).send("User not found")
+            if (!user) {
+                let newUser = {
+                    email,
+                    provider: "google"
+                }
+                users.push(newUser)
+                await fs.writeFile(usersFilePath, JSON.stringify(users))
+            }
 
             let token = jwt.sign({ email }, process.env.SECRET_KEY, { expiresIn: "1h" })
             res.status(200).json({ message: "Signed in successfully...", token })

@@ -38,6 +38,9 @@ async function signin(req, res, next) {
             return user.email === email
         })
         if (!user) return res.status(404).send("Not Found")
+
+        if (user.provider) return res.status(400).send("Not allowed, try signin with " + user.provider)
+
         let isValid = await bcrypt.compare(password, user.password)
         if (!isValid) return res.status(404).send("Invalid password")
 
