@@ -39,7 +39,7 @@ async function signin(req, res, next) {
         })
         if (!user) return res.status(404).send("Not Found")
         let isValid = await bcrypt.compare(password, user.password)
-        if (!isValid) return res.status(404).send("Not Found")
+        if (!isValid) return res.status(404).send("Invalid password")
 
         let token = jwt.sign({email}, secretKey, {expiresIn: "1h"})
         res.status(200).json({message: "Signed in successfully...", token})
