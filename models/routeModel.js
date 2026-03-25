@@ -13,10 +13,11 @@ let freshFruits = [
 async function configureDb () {
     try {
         await fs.access(filePath)
+        console.log("Database is ready...")
     }
     catch (err) {
         await fs.writeFile(filePath, JSON.stringify(freshFruits));
-        console.log("File created...")
+        console.log("Database created...")
     }
 }
 

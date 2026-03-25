@@ -27,8 +27,6 @@ async function getFruits (req, res, next) {
 
     let { name, price, in_season, color } = req.query;
 
-    if (price) price = Number(price)
-
     try {
         let fruits = await fs.readFile(filePath, "utf8")
         fruits = JSON.parse(fruits)
@@ -45,7 +43,7 @@ async function getFruits (req, res, next) {
             })
         }
         if (in_season) {
-            in_season === "true" ? in_season = true : in_season = false;
+            in_season === "true" ? in_season = true : in_season = false; // pending test
             fruits = fruits.filter((fruit) => {
                 return fruit.in_season === in_season
             })
@@ -116,7 +114,7 @@ async function updateFruit(req, res, next) {
             return fruit.id === id ? updatedFruit : fruit;
         })
         await fs.writeFile(filePath, JSON.stringify(updatedFruits))
-        res.status(200).json(updatedFruit)
+        res.status(200).json("Updated successfully...")
     }
     catch (err) {
         next(err)

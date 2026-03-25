@@ -3,7 +3,7 @@ const {fruitsQueue} = require("../queues/fruitsQueues")
 
 fruitsQueue.process("fruits",async (job) => {
 
-    console.log("backgroung job on fresh fruits has been done... ")
+    console.log("Job processing...")
     job.data.fruits.forEach(fruit => {
         console.log(fruit.name)
     });
@@ -16,7 +16,6 @@ fruitsQueue.on("completed", (job) => {
 fruitsQueue.on("failed", (job) => {
     console.log("Job failed...")
 })
-
 
 
 

@@ -1,28 +1,28 @@
 const express = require("express")
-const { checkUrlMiddleware, checkHeaderMiddleware } = require("./middlewares/userMiddleware")
+const { checkUrlMiddleware, checkHostMiddleware } = require("./middlewares/userMiddleware")
+const { errorMidleware } = require("./middlewares/errorMiddleware")
 const authRoutes = require("./routes/authRoutes")
 const fruitRoutes = require("./routes/fruitRoutes")
 const templateRoutes = require("./routes/templateRoutes")
-const { errorMidleware } = require("./middlewares/errorMiddleware")
 const { configureDb } = require("./models/routeModel")
+const {passport} = require("./config/config")
 const env = require("dotenv")
 env.config();
-const {passport} = require("./config/config")
 
 configureDb() 
 
 const app = express()
 
-app.use(passport.initialize()); // initialize passport 
 app.set("view engine", "ejs") // view engine
+app.use(passport.initialize()); // initialize passport for google signin
 app.use(express.json()) // application middleware
 app.use(checkUrlMiddleware) // custom middleware
-app.use(checkHeaderMiddleware) // custom middleware
+app.use(checkHostMiddleware) // custom middleware
 app.use("/auth", authRoutes); // auth routes
 app.use("/fruits", fruitRoutes) // fruit routes
 app.use("/template", templateRoutes) // template routes
 app.use(errorMidleware) // error middleware
 
-app.listen(5000, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log("App is running at 5000 port...")
 })

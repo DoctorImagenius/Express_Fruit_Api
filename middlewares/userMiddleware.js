@@ -4,12 +4,12 @@ let checkUrlMiddleware = (req, res, next) => {
     next();
 }
 
-let checkHeaderMiddleware = (req, res, next) => {
+let checkHostMiddleware = (req, res, next) => {
     console.log(req.headers.host)
     next();
 }
 
 module.exports = {
     checkUrlMiddleware,
-    checkHeaderMiddleware
+    checkHostMiddleware
 }
