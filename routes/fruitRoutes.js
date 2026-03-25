@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const {authMiddleware} = require("../middlewares/authMiddleware")
 const {validationMiddleware} = require("../middlewares/validationMiddleware")
-const { getFruit, getFruits, createFruit, restoreFruits, updateFruit, deleteFruit } = require("../controllers/fruitsControllers")
+const { getFruit, getFruits, createFruit, restoreFruits, updateFruit, deleteFruit } = require("../controllers/fruitController")
 const {validationBodyRules, validationQueryRules, validationParamRules, validationMixRules } = require("../validationRules/fruitValidationRule")
 
 

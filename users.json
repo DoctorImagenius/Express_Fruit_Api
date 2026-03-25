@@ -20,14 +20,6 @@
         "password": "$2b$10$HNU3iaxRg.h5u.mEfFqiUeIk1g/3UH08uYFVBTGAz51bCSsJvkH2S"
     },
     {
-        "email": "baji@gmail.com",
-        "password": "$2b$10$n7.gTW42We4UeQuzO4PDV../uZKIULvlRVkyit0X7bIL8/XJw6CEq"
-    },
-    {
-        "email": "new@gmail.com",
-        "password": "$2b$10$CiHoGGKZHBInwnXjja00eOmZK.j46dScbNxW8bSwRH89mMbGGki/W"
-    },
-    {
         "email": "imagenius1001@gmail.com",
         "provider": "google"
     }

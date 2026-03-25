@@ -1,11 +1,11 @@
 const express = require("express")
-const { checkUrlMiddleware, checkHostMiddleware } = require("./middlewares/userMiddleware")
+const { checkUrlMiddleware, checkHostMiddleware } = require("./middlewares/customMiddleware")
 const { errorMidleware } = require("./middlewares/errorMiddleware")
 const authRoutes = require("./routes/authRoutes")
 const fruitRoutes = require("./routes/fruitRoutes")
 const templateRoutes = require("./routes/templateRoutes")
 const { configureDb } = require("./models/routeModel")
-const {passport} = require("./config/config")
+const {passport} = require("./config/passportConfig")
 const env = require("dotenv")
 env.config();
 

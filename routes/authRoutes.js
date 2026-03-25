@@ -1,11 +1,11 @@
 const express = require("express")
 const router = express.Router()
-const {signup, signin} = require("../controllers/authControllers")
+const {signup, signin} = require("../controllers/authController")
 const {googleSignin} = require("../controllers/googleAuthController")
 const {validationAuthRules} = require("../validationRules/authValidationRule")
 const {validationMiddleware} = require("../middlewares/validationMiddleware")
 const {rateLimitMiddleware} = require("../middlewares/rateLimitMiddleware")
-const {passport} = require("../config/config")
+const {passport} = require("../config/passportConfig")
 
 
 router.post("/signup", validationAuthRules, validationMiddleware, signup)

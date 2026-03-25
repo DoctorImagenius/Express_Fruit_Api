@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const {getTemplateEngine, getTemplateEngineById} = require("../controllers/templateControllers")
+const {getTemplateEngine, getTemplateEngineById} = require("../controllers/templateController")
 const {authMiddleware} = require("../middlewares/authMiddleware")
 const {validationParamRules} = require("../validationRules/templateValidationRule")
 const {validationMiddleware} = require("../middlewares/validationMiddleware")
