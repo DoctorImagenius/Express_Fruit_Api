@@ -85,7 +85,7 @@ async function restoreFruits(req, res, next) {
 
     try {
         await fs.writeFile(filePath, JSON.stringify(freshFruits));
-        await fruitQueue.add("fruits", {fruits : freshFruits}, {delay: 1000, attempts: 3, backoff: 1000})
+        fruitQueue.add("fruits", {fruits : freshFruits}, {delay: 1000, attempts: 3, backoff: 1000})
         res.status(201).json({
             message: "Fruits restored successfully...",
             fruits: freshFruits

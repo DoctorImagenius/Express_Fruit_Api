@@ -1,7 +1,7 @@
 const Queue = require("bull")
 const {fruitQueue} = require("../queues/fruitQueue")
 
-fruitQueue.process("fruits",async (job) => {
+fruitQueue.process("fruits", (job) => {
 
     console.log("Job processing...")
     job.data.fruits.forEach(fruit => {

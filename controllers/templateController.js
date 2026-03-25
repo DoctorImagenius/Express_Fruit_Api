@@ -3,7 +3,7 @@ const path = require("path")
 const filePath = path.join(__dirname, "../fruits.json")
 
 
-async function getTemplateEngine(req, res, next) {
+async function getTemplateEngineFruits(req, res, next) {
     
     try {
         let fruits = await fs.readFile(filePath, "utf8")
@@ -15,7 +15,7 @@ async function getTemplateEngine(req, res, next) {
     }
 }
 
-async function getTemplateEngineById(req, res, next) {
+async function getTemplateEngineFruit(req, res, next) {
     const id = Number(req.params.id);
     try {
         let fruits = await fs.readFile(filePath, "utf8")
@@ -32,4 +32,4 @@ async function getTemplateEngineById(req, res, next) {
 }
 
 
-module.exports = {getTemplateEngine, getTemplateEngineById}
+module.exports = {getTemplateEngineFruits, getTemplateEngineFruit}

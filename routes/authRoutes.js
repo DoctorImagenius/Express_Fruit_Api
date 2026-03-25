@@ -9,7 +9,7 @@ const {passport} = require("../config/passportConfig")
 
 
 router.post("/signup", validationAuthRules, validationMiddleware, signup)
-router.post("/signin", rateLimitMiddleware, signin)
+router.post("/signin", rateLimitMiddleware, validationAuthRules, validationMiddleware ,signin)
 router.get("/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 router.get("/google/callback", passport.authenticate("google", { session: false }), googleSignin)
 
